@@ -1,0 +1,35 @@
+{
+  "name": "openstudio-ai",
+  "version": "0.1.5",
+  "description": "OpenStudio AI harness for OpenStudio model editing, simulation, results, SDK lookup, and reusable workflow skills.",
+  "author": {
+    "name": "OpenStudio AI"
+  },
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "openstudio",
+    "building-energy-modeling",
+    "mcp",
+    "simulation"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "OpenStudio AI",
+    "shortDescription": "OpenStudio modeling, simulation, SDK lookup, and workflow skills.",
+    "longDescription": "OpenStudio AI packages MCP tools, reusable skills, reviewed knowledge, and blackboard contracts for building-energy modeling workflows.",
+    "developerName": "OpenStudio AI",
+    "category": "Engineering",
+    "capabilities": [
+      "MCP",
+      "Skills",
+      "Workflow Automation"
+    ],
+    "defaultPrompt": [
+      "Inspect this OpenStudio model.",
+      "Add a VAV reheat system.",
+      "Run simulation and summarize results."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

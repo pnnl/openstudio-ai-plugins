@@ -1,0 +1,20 @@
+{
+  "name": "openstudio-ai-local",
+  "interface": {
+    "displayName": "OpenStudio AI Local"
+  },
+  "plugins": [
+    {
+      "name": "openstudio-ai",
+      "source": {
+        "source": "local",
+        "path": "./plugins/openstudio-ai"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
+    }
+  ]
+}

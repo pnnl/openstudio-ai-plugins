@@ -1,0 +1,8 @@
+[
+  {
+    "name": "openstudio-learning-events",
+    "command": "\"${CLAUDE_PLUGIN_ROOT}\"/bin/openstudio-ai-learning-monitor",
+    "description": "Passive notifications for OpenStudio AI candidate learning events.",
+    "when": "on-skill-invoke:propose-measure"
+  }
+]

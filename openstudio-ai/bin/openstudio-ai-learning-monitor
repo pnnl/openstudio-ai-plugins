@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+"""Emit OpenStudio AI learning events for Claude Code monitor notifications."""
+
+from __future__ import annotations
+
+import os
+import sys
+import time
+from pathlib import Path
+
+
+def candidate_paths() -> list[Path]:
+    paths: list[Path] = []
+    explicit = os.getenv("OPENSTUDIO_AI_LEARNING_EVENT_LOG", "").strip()
+    if explicit:
+        paths.append(Path(explicit).expanduser())
+    project_dir = os.getenv("CLAUDE_PROJECT_DIR", "").strip()
+    if project_dir:
+        paths.append(Path(project_dir) / "logs" / "learning_events.jsonl")
+    data_dir = os.getenv("OPENSTUDIO_AI_DATA_DIR", "").strip()
+    if data_dir:
+        paths.append(Path(data_dir) / "logs" / "learning_events.jsonl")
+    return paths
+
+
+def first_existing_path() -> Path | None:
+    for path in candidate_paths():
+        if path.exists():
+            return path
+    return None
+
+
+def main() -> int:
+    path = first_existing_path()
+    if path is None:
+        return 0
+    with path.open("r", encoding="utf-8") as stream:
+        stream.seek(0, os.SEEK_END)
+        while True:
+            line = stream.readline()
+            if line:
+                print(line.rstrip(), flush=True)
+            else:
+                time.sleep(1.0)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

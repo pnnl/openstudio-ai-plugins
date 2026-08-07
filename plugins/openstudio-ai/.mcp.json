@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "openstudio_ai": {
+      "command": "openstudio-ai-mcp",
+      "args": [
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "OPENSTUDIO_AI_PLUGIN_VERSION": "0.1.5",
+        "OPENSTUDIO_AI_PLUGIN_CONTRACT_VERSION": "2"
+      }
+    }
+  }
+}
