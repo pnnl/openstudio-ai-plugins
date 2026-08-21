@@ -7,7 +7,7 @@ import shutil
 import subprocess
 import sys
 
-PLUGIN_VERSION = "0.1.5"
+PLUGIN_VERSION = "0.1.6"
 PLUGIN_CONTRACT_VERSION = "2"
 
 
