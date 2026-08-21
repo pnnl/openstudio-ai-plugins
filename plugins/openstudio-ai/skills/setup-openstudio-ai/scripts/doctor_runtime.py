@@ -13,7 +13,7 @@ try:
 except ModuleNotFoundError:  # Python 3.10 compatibility for exported helpers
     tomllib = None
 
-PLUGIN_VERSION = "0.1.7"
+PLUGIN_VERSION = "0.1.8"
 PLUGIN_CONTRACT_VERSION = "2"
 
 
