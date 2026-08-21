@@ -1,7 +1,7 @@
 {
   "name": "openstudio-ai",
   "displayName": "OpenStudio AI",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "OpenStudio AI harness for model editing, simulation, results, SDK lookup, and reusable building-energy workflow skills.",
   "author": {
     "name": "OpenStudio AI"
