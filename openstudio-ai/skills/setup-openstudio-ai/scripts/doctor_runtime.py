@@ -6,14 +6,48 @@ import json
 import shutil
 import subprocess
 import sys
+from pathlib import Path
 
-PLUGIN_VERSION = "0.1.6"
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python 3.10 compatibility for exported helpers
+    tomllib = None
+
+PLUGIN_VERSION = "0.1.7"
 PLUGIN_CONTRACT_VERSION = "2"
 
 
 def command_status(command: str) -> dict[str, object]:
     path = shutil.which(command)
     return {"command": command, "available": path is not None, "path": path}
+
+
+def nlr_mcp_status() -> dict[str, object]:
+    """Report whether the optional NLR MCP server is configured locally."""
+    checked_paths = []
+    codex_config = Path.home() / ".codex" / "config.toml"
+    checked_paths.append(str(codex_config))
+    if tomllib is not None and codex_config.is_file():
+        try:
+            config = tomllib.loads(codex_config.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, tomllib.TOMLDecodeError):
+            config = {}
+        if isinstance(config.get("mcp_servers"), dict) and "nlr_openstudio" in config["mcp_servers"]:
+            return {"configured": True, "name": "nlr_openstudio", "source": str(codex_config)}
+
+    for directory in (Path.cwd(), *Path.cwd().parents):
+        mcp_config = directory / ".mcp.json"
+        checked_paths.append(str(mcp_config))
+        if not mcp_config.is_file():
+            continue
+        try:
+            config = json.loads(mcp_config.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            continue
+        if isinstance(config.get("mcpServers"), dict) and "nlr_openstudio" in config["mcpServers"]:
+            return {"configured": True, "name": "nlr_openstudio", "source": str(mcp_config)}
+
+    return {"configured": False, "name": "nlr_openstudio", "checked_paths": checked_paths}
 
 
 def main() -> int:
@@ -24,6 +58,7 @@ def main() -> int:
         },
         "openstudio_ai_mcp": command_status("openstudio-ai-mcp"),
         "openstudio_ai": command_status("openstudio-ai"),
+        "nlr_openstudio": nlr_mcp_status(),
     }
     print(json.dumps(report, indent=2))
 
@@ -72,6 +107,14 @@ def main() -> int:
         return 1
 
     print("\nOpenStudio AI MCP runtime is ready for this plugin.")
+    if report["nlr_openstudio"]["configured"]:
+        print("NLR OpenStudio-MCP is configured locally and can be selected as the core modeling backend.")
+    else:
+        print(
+            "NLR OpenStudio-MCP is not configured locally. OpenStudio AI works normally without it; "
+            "you can optionally use NLR as the core modeling backend. Docker setup: "
+            "https://pnnl.github.io/openstudio-ai-plugins/#quick-start"
+        )
     return 0
 
 
