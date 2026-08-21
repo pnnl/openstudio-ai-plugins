@@ -22,6 +22,7 @@ OpenStudio AI is a Claude plugin package for building-energy modeling workflows 
 
 - `add-vav-reheat`
 - `capture-session-lesson`
+- `delegated-nlr-modeling`
 - `hvac-sizing-assistant`
 - `openstudio-hvac-air-loop-creator`
 - `openstudio-hvac-central-cooling-coil-creator`
