@@ -50,6 +50,13 @@ def main() -> int:
     print(f"Python executable: {sys.executable}")
     print(f"Python version: {sys.version.split()[0]}")
 
+    if sys.version_info < (3, 10):
+        print(
+            "\nOpenStudio AI requires Python 3.10 or newer. Install a supported "
+            "Python version, then rerun setup."
+        )
+        return 2
+
     package_spec = os.getenv("OPENSTUDIO_AI_PACKAGE_SPEC", DEFAULT_PACKAGE_SPEC)
     if shutil.which("openstudio-ai") and shutil.which("openstudio-ai-mcp"):
         print("\nOpenStudio AI commands are available. Checking for a compatible runtime update.")
