@@ -1,7 +1,7 @@
 ---
 name: openstudio-hvac-central-cooling-coil-creator
 description: Create the central cooling coil for an OpenStudio VAV air loop, with chilled-water or approved DX fallback options.
-version: 0.2.1
+version: 0.2.2
 output_format: markdown_with_json_state_patch
 ---
 

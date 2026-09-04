@@ -13,8 +13,8 @@ try:
 except ModuleNotFoundError:  # Python 3.10 compatibility for exported helpers
     tomllib = None
 
-PLUGIN_VERSION = "0.2.1"
-PLUGIN_CONTRACT_VERSION = "2"
+PLUGIN_VERSION = "0.2.2"
+PLUGIN_CONTRACT_VERSION = "3"
 
 
 def command_status(command: str) -> dict[str, object]:

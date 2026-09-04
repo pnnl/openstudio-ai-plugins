@@ -1,7 +1,7 @@
 ---
 name: openstudio-hvac-schedule-resolver
 description: Resolve or create HVAC operation, outdoor-air damper, and supply-air temperature schedules for OpenStudio HVAC workflows.
-version: 0.2.1
+version: 0.2.2
 output_format: markdown_with_json_state_patch
 ---
 

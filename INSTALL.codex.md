@@ -34,4 +34,4 @@ Use `--dry-run` to preview. If the project already has an unmanaged `AGENTS.md`,
 
 ## Runtime Setup
 
-After installation, ask Codex to run `setup-openstudio-ai`. The setup command checks Python, checks `openstudio-ai-mcp`, and explains any missing installation steps in energy-modeler language.
+After installation, invoke the setup skill with `$setup-openstudio-ai` (or ask Codex in plain language to set up OpenStudio AI). `/setup-openstudio-ai` is not a Codex CLI skill command. The setup skill checks Python, checks `openstudio-ai-mcp`, and explains any missing installation steps in energy-modeler language.

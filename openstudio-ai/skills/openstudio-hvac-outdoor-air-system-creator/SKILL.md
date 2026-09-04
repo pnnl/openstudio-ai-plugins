@@ -1,7 +1,7 @@
 ---
 name: openstudio-hvac-outdoor-air-system-creator
 description: Create outdoor-air controller, outdoor-air system, and air-loop controls for OpenStudio VAV workflows.
-version: 0.2.1
+version: 0.2.2
 output_format: markdown_with_json_state_patch
 ---
 
