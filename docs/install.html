@@ -1,12 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Install OpenStudio AI in Codex or Claude Code using a terminal or desktop client." />
-    <title>Install OpenStudio AI</title>
-    <style>
-      :root { --navy:#071b42; --ink:#12213f; --blue:#2563eb; --pale:#eff6ff; --muted:#51617a; --line:#dbe5f4; }
+<head>
+  <meta name="generator" content="HTML Tidy for Mac OS X (vers 31 October 2006 - Apple Inc. build 13670), see www.w3.org">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Install OpenStudio AI in Codex or Claude Code using a terminal or desktop client.">
+
+  <title>Install OpenStudio AI</title>
+  <style type="text/css">
+    :root { --navy:#071b42; --ink:#12213f; --blue:#2563eb; --pale:#eff6ff; --muted:#51617a; --line:#dbe5f4; }
       * { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; background:#fff; color:var(--ink); font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; } a { color:inherit; text-decoration:none; } .wrap { width:min(1120px,calc(100% - 40px)); margin:auto; }
       .nav { position:sticky; top:0; z-index:2; min-height:72px; display:flex; align-items:center; border-bottom:1px solid var(--line); background:#fffffff0; backdrop-filter:blur(16px); }.nav .wrap { display:flex; align-items:center; justify-content:space-between; gap:22px; }.brand { font-weight:780; letter-spacing:-.03em; }.brand span { display:inline-grid; place-items:center; width:29px; height:29px; margin-right:9px; border-radius:8px; background:linear-gradient(135deg,#38bdf8,#2563eb); color:#fff; }.links { display:flex; gap:20px; color:#41516b; font-size:.9rem; font-weight:650; }.links a:hover { color:var(--blue); }
       .hero { padding:78px 0 52px; background:linear-gradient(135deg,#061635,#0f4087); color:#fff; }.eyebrow { color:#bceeff; font-weight:760; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; }.hero h1 { max-width:700px; margin:10px 0 13px; font-size:clamp(2.6rem,5vw,4.4rem); line-height:1.02; letter-spacing:-.06em; font-weight:480; }.hero p { max-width:690px; margin:0; color:#c7d8f5; font-size:1.08rem; }.choices { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }.choice { padding:11px 15px; border:1px solid #95c8ff65; border-radius:10px; background:#0d38715a; color:#fff; font-size:.91rem; font-weight:700; }.choice:hover { background:#1d5cad; }
@@ -15,16 +18,339 @@
       .desktop { background:#f8fbff; border-top:1px solid #e6eefb; border-bottom:1px solid #e6eefb; }.desktop .client { display:flex; flex-direction:column; }.desktop .step { grid-template-columns:38px minmax(0,1fr); }.shot { margin:14px 0 0; overflow:hidden; border:1px solid var(--line); border-radius:12px; background:#fff; }.shot img { display:block; width:100%; height:auto; }.shot figcaption { padding:8px 11px; border-top:1px solid var(--line); color:#52617a; font-size:.78rem; }.note { max-width:1000px; margin:28px auto 0; padding:14px 16px; border:1px solid #bfdbfe; border-radius:12px; background:var(--pale); color:#1e3a68; font-size:.9rem; }.footer { padding:29px 0; background:#061633; color:#a9bddb; font-size:.84rem; }.footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:15px; }
       @media (max-width:760px) { .links { display:none; }.client-grid,.mcp-steps { grid-template-columns:1fr; }.hero { padding:65px 0 45px; } section { padding:62px 0; } }
       @media (max-width:520px) { .wrap { width:min(100% - 30px,1120px); }.hero h1 { font-size:2.75rem; }.client-head,.step { padding-left:18px; padding-right:18px; }.choice { width:100%; text-align:center; } }
-    </style>
-  </head>
-  <body>
-    <header class="nav"><div class="wrap"><a class="brand" href="index.html"><span>◫</span>OpenStudio AI</a><nav class="links" aria-label="Installation options"><a href="#terminal">Terminal</a><a href="#desktop">Desktop client</a><a href="#openstudio-mcp">OpenStudio-MCP</a><a href="index.html">Overview</a><a href="https://github.com/pnnl/openstudio-ai-plugins">GitHub</a></nav></div></header>
-    <main>
-      <section class="hero"><div class="wrap"><span class="eyebrow">OpenStudio AI installation</span><h1>Choose the installation path that fits how you work.</h1><p>Use the terminal for scripted or repository-local setup, or install directly from the standalone desktop clients. Both paths add the same OpenStudio AI plugin.</p><div class="choices"><a class="choice" href="#terminal">Terminal-based installation ↓</a><a class="choice" href="#desktop">Desktop-client installation ↓</a></div></div></section>
-      <section id="terminal"><div class="wrap"><div class="section-head"><span class="kicker">Option 1</span><h2>Terminal-based installation</h2><p>Use the marketplace commands when you want repeatable setup from a shell.</p></div><div class="client-grid"><article class="client"><div class="client-head"><h3>Claude Code</h3><p>Add the marketplace, install the plugin, then reload it in the session.</p></div><div class="step"><div class="num">1</div><div><h4>Add the marketplace</h4><code class="code">claude plugin marketplace add https://github.com/pnnl/openstudio-ai-plugins.git</code></div></div><div class="step"><div class="num">2</div><div><h4>Install the plugin</h4><code class="code">claude plugin install openstudio-ai@openstudio-ai-local</code></div></div><div class="step"><div class="num">3</div><div><h4>Reload and run setup</h4><code class="code">/reload-plugins<br>/openstudio-ai:setup-openstudio-ai</code></div></div></article><article class="client"><div class="client-head"><h3>Codex</h3><p>Add the marketplace, install the plugin, then run setup in a task.</p></div><div class="step"><div class="num">1</div><div><h4>Add the marketplace</h4><code class="code">codex plugin marketplace add pnnl/openstudio-ai-plugins</code></div></div><div class="step"><div class="num">2</div><div><h4>Install the plugin</h4><code class="code">codex plugin add openstudio-ai@openstudio-ai-local</code></div></div><div class="step"><div class="num">3</div><div><h4>Run setup in a task</h4><code class="code">/setup-openstudio-ai</code></div></div></article></div><p class="note">For project-wide Codex policy setup and local-folder installation, see the repository’s <a href="../INSTALL.codex.md">Codex instructions</a>. For Claude Code scopes and validation, see the <a href="../INSTALL.claude.md">Claude Code instructions</a>.</p></div></section>
-      <section id="desktop" class="desktop"><div class="wrap"><div class="section-head"><span class="kicker">Option 2</span><h2>Desktop-client installation</h2><p>Add the marketplace through the application UI, then install OpenStudio AI. The two clients are shown side by side for easy comparison.</p></div><div class="client-grid"><article class="client"><div class="client-head"><h3>Claude Code Desktop</h3><p>Use the Plugins directory in a local or SSH session.</p></div><div class="step"><div class="num">1</div><div><h4>Add the marketplace</h4><p>Choose <strong>Add marketplace</strong>, paste the repository URL, and select the suggested <strong>Use</strong> option.</p><code class="code">https://github.com/pnnl/openstudio-ai-plugins.git</code><figure class="shot"><img src="assets/claude_code_marketplace_sync.png" alt="Claude Code Add marketplace dialog with the OpenStudio AI Plugins GitHub URL entered" /><figcaption>Paste the repository URL into Add marketplace.</figcaption></figure></div></div><div class="step"><div class="num">2</div><div><h4>Install OpenStudio AI</h4><p>Select <strong>openstudio-ai-local</strong>, then click <strong>+</strong> beside OpenStudio AI.</p><figure class="shot"><img src="assets/claude_code_plugin_install.png" alt="Claude Code plugin directory showing the OpenStudio AI install button" /><figcaption>Install from the Personal marketplace list.</figcaption></figure></div></div><div class="step"><div class="num">3</div><div><h4>Run setup</h4><p>Start a session for your project, type <code>/setup-openstudio-ai</code>, and select the setup skill.</p><figure class="shot"><img src="assets/claude_code_setup_openstudio_ai.png" alt="Claude Desktop with setup-openstudio-ai typed into a project session" /><figcaption>Run setup once for the project environment.</figcaption></figure></div></div></article><article class="client"><div class="client-head"><h3>Codex Desktop</h3><p>Use the Plugins page in Customize.</p></div><div class="step"><div class="num">1</div><div><h4>Add the marketplace</h4><p>Open <strong>Customize → Plugins</strong>, choose <strong>Add → Add plugin marketplace</strong>, paste the source, and select <strong>Add marketplace</strong>.</p><code class="code">https://github.com/pnnl/openstudio-ai-plugins.git</code><figure class="shot"><img src="assets/codex_marketplace_sync.png" alt="Codex Add plugin marketplace dialog with the OpenStudio AI Plugins GitHub URL entered" /><figcaption>Add the repository as a Codex marketplace.</figcaption></figure></div></div><div class="step"><div class="num">2</div><div><h4>Install OpenStudio AI</h4><p>Under <strong>Personal → OpenStudio AI Local</strong>, click <strong>+</strong> beside OpenStudio AI.</p><figure class="shot"><img src="assets/codex_plugin_install.png" alt="Codex Plugins page showing OpenStudio AI Local and the OpenStudio AI install button" /><figcaption>Install from the Personal marketplace.</figcaption></figure></div></div><div class="step"><div class="num">3</div><div><h4>Run setup in a task</h4><p>Open a project task, type <code>/setup-openstudio-ai</code>, and choose <strong>OpenStudio AI: Setup OpenStudio AI</strong>.</p><figure class="shot"><img src="assets/codex_setup_openstudio-ai.png" alt="Codex task showing the OpenStudio AI Setup OpenStudio AI skill suggestion" /><figcaption>Start the setup skill in the project where you will model.</figcaption></figure></div></div></article></div><p class="note">The setup skill checks your local runtime and explains any missing requirements before you begin modeling.</p></div></section>
-      <section id="openstudio-mcp"><div class="wrap"><div class="section-head"><span class="kicker">Optional terminal step</span><h2>Add OpenStudio-MCP</h2><p>OpenStudio AI works with the plugin alone. Add OpenStudio-MCP when your workflow needs its local, containerized OpenStudio capabilities.</p></div><article class="mcp-card"><span class="kicker">Docker-based provider</span><h3>Prepare the local OpenStudio-MCP runtime</h3><p>Install and start Docker Desktop first, then download the OpenStudio-MCP image. The provider setup guide covers the final client configuration and required Docker mounts.</p><div class="mcp-steps"><article><h4>macOS with Homebrew</h4><p>Install Docker Desktop and confirm that it is running.</p><code class="code">brew install --cask docker<br>open -a Docker<br>docker version</code></article><article><h4>Windows PowerShell</h4><p>Install Docker Desktop and confirm that Docker is available.</p><code class="code">winget install -e --id Docker.DockerDesktop<br>docker version</code></article><article><h4>Pull and connect</h4><p>Download the image, then configure it for your chosen client.</p><code class="code">docker pull nrel/openstudio-mcp:dev</code><a class="guide-link" href="https://github.com/NatLabRockies/openstudio-mcp">OpenStudio-MCP setup guide ↗</a></article></div></article></div></section>
-    </main>
-    <footer class="footer"><div class="wrap"><span>OpenStudio AI · One agentic energy-modeling experience</span><span><a href="index.html">Back to overview</a></span></div></footer>
-  </body>
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span>◫</span>OpenStudio AI</a>
+
+      <nav class="links" aria-label="Installation options"><a href="#terminal">Terminal</a><a href="#desktop">Desktop client</a><a href="#openstudio-mcp">OpenStudio-MCP</a><a href="index.html">Overview</a><a href="https://github.com/pnnl/openstudio-ai-plugins">GitHub</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">OpenStudio AI installation</span>
+
+        <h1>Choose the installation path that fits how you work.</h1>
+
+        <p>Use the terminal for scripted or repository-local setup, or install directly from the standalone desktop clients. Both paths add the same OpenStudio AI plugin.</p>
+
+        <div class="choices">
+          <a class="choice" href="#terminal">Terminal-based installation ↓</a><a class="choice" href="#desktop">Desktop-client installation ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="terminal">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Option 1</span>
+
+          <h2>Terminal-based installation</h2>
+
+          <p>Use the marketplace commands when you want repeatable setup from a shell.</p>
+        </div>
+
+        <div class="client-grid">
+          <article class="client">
+            <div class="client-head">
+              <h3>Claude Code</h3>
+
+              <p>Add the marketplace, install the plugin, then reload it in the session.</p>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                1
+              </div>
+
+              <div>
+                <h4>Add the marketplace</h4><code class="code">claude plugin marketplace add https://github.com/pnnl/openstudio-ai-plugins.git</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                2
+              </div>
+
+              <div>
+                <h4>Install the plugin</h4><code class="code">claude plugin install openstudio-ai@openstudio-ai-local</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                3
+              </div>
+
+              <div>
+                <h4>Reload and run setup</h4><code class="code">/reload-plugins<br>
+                /openstudio-ai:setup-openstudio-ai</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                4
+              </div>
+
+              <div>
+                <h4>Update the plugin</h4>
+
+                <p>Refresh the marketplace to retrieve the latest OpenStudio AI release, then reload plugins in an active session.</p><code class="code">claude plugin marketplace update openstudio-ai-local<br>
+                /reload-plugins</code>
+              </div>
+            </div>
+          </article>
+
+          <article class="client">
+            <div class="client-head">
+              <h3>Codex</h3>
+
+              <p>Add the marketplace, install the plugin, then run setup in a task.</p>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                1
+              </div>
+
+              <div>
+                <h4>Add the marketplace</h4><code class="code">codex plugin marketplace add pnnl/openstudio-ai-plugins</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                2
+              </div>
+
+              <div>
+                <h4>Install the plugin</h4><code class="code">codex plugin add openstudio-ai@openstudio-ai-local</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                3
+              </div>
+
+              <div>
+                <h4>Run setup in a task</h4><code class="code">/setup-openstudio-ai</code>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                4
+              </div>
+
+              <div>
+                <h4>Update the plugin</h4>
+
+                <p>Refresh the marketplace to retrieve the latest OpenStudio AI release, then start a new task or reopen Codex.</p><code class="code">codex plugin marketplace upgrade openstudio-ai-local</code>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="note">For project-wide Codex policy setup and local-folder installation, see the repository’s <a href="../INSTALL.codex.md">Codex instructions</a>. For Claude Code scopes and validation, see the <a href="../INSTALL.claude.md">Claude Code instructions</a>.</p>
+      </div>
+    </section>
+
+    <section id="desktop" class="desktop">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Option 2</span>
+
+          <h2>Desktop-client installation</h2>
+
+          <p>Add the marketplace through the application UI, then install OpenStudio AI. The equivalent steps are arranged side by side so you can follow the client you use.</p>
+        </div>
+
+        <div class="client-grid">
+          <article class="client">
+            <div class="client-head">
+              <h3>Claude Code Desktop</h3>
+
+              <p>Open the Plugins directory to add and install OpenStudio AI.</p>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                1
+              </div>
+
+              <div>
+                <h4>Add the marketplace</h4>
+
+                <p>Choose <strong>Add marketplace</strong>, paste the repository URL, and select the suggested <strong>Use</strong> option.</p><code class="code">https://github.com/pnnl/openstudio-ai-plugins.git</code>
+
+                <figure class="shot">
+                  <img src="assets/claude_code_marketplace_sync.png" alt="Claude Code Add marketplace dialog with the OpenStudio AI Plugins GitHub URL entered">
+
+                  <figcaption>Paste the repository URL into Add marketplace.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                2
+              </div>
+
+              <div>
+                <h4>Install OpenStudio AI</h4>
+
+                <p>Select <strong>openstudio-ai-local</strong>, then click <strong>+</strong> beside OpenStudio AI.</p>
+
+                <figure class="shot">
+                  <img src="assets/claude_code_plugin_install.png" alt="Claude Code plugin directory showing the OpenStudio AI install button">
+
+                  <figcaption>Install from the Personal marketplace list.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                3
+              </div>
+
+              <div>
+                <h4>Run setup</h4>
+
+                <p>Start a session for your project, type <code>/setup-openstudio-ai</code>, and select the setup skill.</p>
+
+                <figure class="shot">
+                  <img src="assets/claude_code_setup_openstudio_ai.png" alt="Claude Desktop with setup-openstudio-ai typed into a project session">
+
+                  <figcaption>Run setup once for the project environment.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="client">
+            <div class="client-head">
+              <h3>Codex Desktop</h3>
+
+              <p>Open Customize, then Plugins, to add and install OpenStudio AI.</p>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                1
+              </div>
+
+              <div>
+                <h4>Add the marketplace</h4>
+
+                <p>Open <strong>Customize → Plugins</strong>, choose <strong>Add → Add plugin marketplace</strong>, paste the source, and select <strong>Add marketplace</strong>.</p><code class="code">https://github.com/pnnl/openstudio-ai-plugins.git</code>
+
+                <figure class="shot">
+                  <img src="assets/codex_marketplace_sync.png" alt="Codex Add plugin marketplace dialog with the OpenStudio AI Plugins GitHub URL entered">
+
+                  <figcaption>Add the repository as a Codex marketplace.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                2
+              </div>
+
+              <div>
+                <h4>Install OpenStudio AI</h4>
+
+                <p>Under <strong>Personal → OpenStudio AI Local</strong>, click <strong>+</strong> beside OpenStudio AI.</p>
+
+                <figure class="shot">
+                  <img src="assets/codex_plugin_install.png" alt="Codex Plugins page showing OpenStudio AI Local and the OpenStudio AI install button">
+
+                  <figcaption>Install from the Personal marketplace.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">
+                3
+              </div>
+
+              <div>
+                <h4>Run setup in a task</h4>
+
+                <p>Open a project task, type <code>/setup-openstudio-ai</code>, and choose <strong>OpenStudio AI: Setup OpenStudio AI</strong>.</p>
+
+                <figure class="shot">
+                  <img src="assets/codex_setup_openstudio-ai.png" alt="Codex task showing the OpenStudio AI Setup OpenStudio AI skill suggestion">
+
+                  <figcaption>Start the setup skill in the project where you will model.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="note">The setup skill checks your local runtime and explains any missing requirements before you begin modeling.</p>
+      </div>
+    </section>
+
+    <section id="openstudio-mcp">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Optional terminal step</span>
+
+          <h2>Add OpenStudio-MCP</h2>
+
+          <p>OpenStudio AI works with the plugin alone. Add OpenStudio-MCP when your workflow needs its local, containerized OpenStudio capabilities.</p>
+        </div>
+
+        <article class="mcp-card">
+          <span class="kicker">Docker-based provider</span>
+
+          <h3>Prepare the local OpenStudio-MCP runtime</h3>
+
+          <p>Install and start Docker Desktop first, then download the OpenStudio-MCP image. The provider setup guide covers the final client configuration and required Docker mounts.</p>
+
+          <div class="mcp-steps">
+            <article>
+              <h4>macOS with Homebrew</h4>
+
+              <p>Install Docker Desktop and confirm that it is running.</p><code class="code">brew install --cask docker<br>
+              open -a Docker<br>
+              docker version</code>
+            </article>
+
+            <article>
+              <h4>Windows PowerShell</h4>
+
+              <p>Install Docker Desktop and confirm that Docker is available.</p><code class="code">winget install -e --id Docker.DockerDesktop<br>
+              docker version</code>
+            </article>
+
+            <article>
+              <h4>Pull and connect</h4>
+
+              <p>Download the image, then configure it for your chosen client.</p><code class="code">docker pull nrel/openstudio-mcp:dev</code><a class="guide-link" href="https://github.com/NatLabRockies/openstudio-mcp">OpenStudio-MCP setup guide ↗</a>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>OpenStudio AI &#194;&#183; One agentic energy-modeling experience</span><span><a href="index.html">Back to overview</a></span>
+    </div>
+  </footer>
+</body>
 </html>
