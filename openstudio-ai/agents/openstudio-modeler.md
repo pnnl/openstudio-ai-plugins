@@ -1,7 +1,6 @@
 ---
 name: openstudio-modeler
 description: Senior OpenStudio modeler for MCP-backed model editing, simulation, results, SDK lookup, and long-running workflow state.
-model: sonnet
 effort: high
 ---
 
