@@ -31,6 +31,7 @@ OpenStudio AI is a Codex plugin package for building-energy modeling workflows u
 - `propose-measure`
 - `query-results`
 - `simulate`
+- `view-openstudio-geometry`
 
 ## Runtime Note
 

@@ -39,6 +39,7 @@ OpenStudio AI is a Claude plugin package for building-energy modeling workflows 
 - `propose-measure`
 - `query-results`
 - `simulate`
+- `view-openstudio-geometry`
 
 ## Runtime Note
 
