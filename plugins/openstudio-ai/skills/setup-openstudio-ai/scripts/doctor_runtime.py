@@ -13,7 +13,7 @@ try:
 except ModuleNotFoundError:  # Python 3.10 compatibility for exported helpers
     tomllib = None
 
-PLUGIN_VERSION = "0.2.2"
+PLUGIN_VERSION = "0.2.3"
 PLUGIN_CONTRACT_VERSION = "3"
 
 
@@ -32,8 +32,9 @@ def nlr_mcp_status() -> dict[str, object]:
             config = tomllib.loads(codex_config.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, tomllib.TOMLDecodeError):
             config = {}
-        if isinstance(config.get("mcp_servers"), dict) and "nlr_openstudio" in config["mcp_servers"]:
-            return {"configured": True, "name": "nlr_openstudio", "source": str(codex_config)}
+        servers = config.get("mcp_servers") if isinstance(config, dict) else None
+        if isinstance(servers, dict) and "openstudio-mcp" in servers:
+            return {"configured": True, "name": "openstudio-mcp", "source": str(codex_config)}
 
     for directory in (Path.cwd(), *Path.cwd().parents):
         mcp_config = directory / ".mcp.json"
@@ -44,8 +45,9 @@ def nlr_mcp_status() -> dict[str, object]:
             config = json.loads(mcp_config.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, json.JSONDecodeError):
             continue
-        if isinstance(config.get("mcpServers"), dict) and "nlr_openstudio" in config["mcpServers"]:
-            return {"configured": True, "name": "nlr_openstudio", "source": str(mcp_config)}
+        servers = config.get("mcpServers") if isinstance(config, dict) else None
+        if isinstance(servers, dict) and "openstudio-mcp" in servers:
+            return {"configured": True, "name": "openstudio-mcp", "source": str(mcp_config)}
 
     return {"configured": False, "name": "nlr_openstudio", "checked_paths": checked_paths}
 
@@ -94,6 +96,16 @@ def main() -> int:
         if doctor.stderr.strip():
             print(doctor.stderr.strip())
         return 2
+
+    if payload.get("plugin_ready") is False:
+        print(
+            "\nThe plugin requires a newer OpenStudio AI MCP interface than the "
+            "running runtime provides. Ask the user before running "
+            "install_runtime.py, then restart or reconnect the host before retrying."
+        )
+        if doctor.stderr.strip():
+            print(doctor.stderr.strip())
+        return doctor.returncode or 1
 
     if doctor.returncode != 0 or payload.get("core_ready") is not True:
         print("\nOpenStudio AI is not ready for energy modeling. Resolve the blocking diagnostics, reconnect the host, and rerun setup.")
