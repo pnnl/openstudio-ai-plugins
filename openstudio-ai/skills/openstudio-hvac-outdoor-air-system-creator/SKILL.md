@@ -1,7 +1,7 @@
 ---
 name: openstudio-hvac-outdoor-air-system-creator
 description: Create outdoor-air controller, outdoor-air system, and air-loop controls for OpenStudio VAV workflows.
-version: 0.2.2
+version: 0.2.3
 output_format: markdown_with_json_state_patch
 ---
 
@@ -124,5 +124,3 @@ Return only changed fields:
 - Mechanical ventilation method is set to the state value.
 - Availability schedule and night-cycle control were applied.
 - Version-specific availability manager access was handled deliberately.
-
-
