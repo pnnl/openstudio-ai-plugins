@@ -1,0 +1,84 @@
+name: Publish release banner
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the published site source
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update release banner data
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { writeFile } = require("node:fs/promises");
+            const release = context.payload.release;
+            const data = {
+              version: release.tag_name.replace(/^v/, ""),
+              url: release.html_url,
+              summary: "See the release notes for changes and upgrade guidance."
+            };
+            const content = `window.OPENSTUDIO_AI_LATEST_RELEASE = ${JSON.stringify(data, null, 2)};\n\n` +
+              `document.addEventListener("DOMContentLoaded", () => {\n` +
+              `  const release = window.OPENSTUDIO_AI_LATEST_RELEASE;\n` +
+              `  if (!release || !release.version || !release.url) return;\n\n` +
+              `  document.querySelectorAll("[data-release-banner]").forEach((banner) => {\n` +
+              `    const wrap = document.createElement("div");\n` +
+              `    wrap.className = "wrap release-banner-content";\n\n` +
+              `    const label = document.createElement("span");\n` +
+              `    label.className = "release-label";\n` +
+              `    label.textContent = "Latest release";\n\n` +
+              `    const version = document.createElement("strong");\n` +
+              `    version.textContent = \`OpenStudio AI \${release.version}\`;\n\n` +
+              `    const summary = document.createElement("span");\n` +
+              `    summary.className = "release-summary";\n` +
+              `    summary.textContent = release.summary || "See the release notes for changes and upgrade guidance.";\n\n` +
+              `    const link = document.createElement("a");\n` +
+              `    link.href = release.url;\n` +
+              `    link.textContent = "Read release notes ↗";\n\n` +
+              `    wrap.append(label, version, summary, link);\n` +
+              `    banner.append(wrap);\n` +
+              `    banner.hidden = false;\n` +
+              `  });\n` +
+              `});\n`;
+            await writeFile("docs/assets/release-banner.js", content);
+
+      - name: Commit the latest release banner
+        run: |
+          git diff --quiet -- docs/assets/release-banner.js || {
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/assets/release-banner.js
+            git commit -m "docs: publish release ${{ github.event.release.tag_name }}"
+            git push origin HEAD:main
+          }
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
