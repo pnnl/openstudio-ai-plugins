@@ -13,6 +13,7 @@ OpenStudio AI is a Codex plugin package for building-energy modeling workflows u
 
 - `add-vav-reheat`
 - `capture-session-lesson`
+- `curate-learning`
 - `delegated-nlr-modeling`
 - `hvac-sizing-assistant`
 - `openstudio-hvac-air-loop-creator`

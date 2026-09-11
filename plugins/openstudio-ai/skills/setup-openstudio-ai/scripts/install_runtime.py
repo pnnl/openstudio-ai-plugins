@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_PACKAGE_SPEC = "openstudio-ai==0.2.3"
+DEFAULT_PACKAGE_SPEC = "openstudio-ai==0.3.0"
 
 
 def run(command: list[str]) -> int:
