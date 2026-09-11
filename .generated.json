@@ -3,15 +3,15 @@
   "generator": "openstudio-ai export marketplace",
   "package": {
     "name": "openstudio-ai",
-    "version": "0.2.3"
+    "version": "0.3.0"
   },
   "plugin": {
     "name": "openstudio-ai",
-    "mcp_interface_contract_version": "3",
+    "mcp_interface_contract_version": "4",
     "runtime_mode": "marketplace"
   },
   "source": {
-    "revision": "593c5720f900ca135b5c84903fff12e99a5fd3ed",
+    "revision": "21b586fa97cd22754913a0f47dab3db3e5cccf16",
     "dirty": null
   }
 }
