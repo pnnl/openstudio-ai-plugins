@@ -15,10 +15,12 @@
       .hero { padding:78px 0 52px; background:linear-gradient(135deg,#061635,#0f4087); color:#fff; }.eyebrow { color:#bceeff; font-weight:760; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; }.hero h1 { max-width:700px; margin:10px 0 13px; font-size:clamp(2.6rem,5vw,4.4rem); line-height:1.02; letter-spacing:-.06em; font-weight:480; }.hero p { max-width:690px; margin:0; color:#c7d8f5; font-size:1.08rem; }.choices { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }.choice { padding:11px 15px; border:1px solid #95c8ff65; border-radius:10px; background:#0d38715a; color:#fff; font-size:.91rem; font-weight:700; }.choice:hover { background:#1d5cad; }
       section { padding:78px 0; }.section-head { max-width:690px; margin:0 auto 40px; text-align:center; }.section-head h2 { margin:9px 0 10px; font-size:clamp(2rem,3.6vw,3rem); line-height:1.08; letter-spacing:-.055em; font-weight:480; }.section-head p { margin:0; color:var(--muted); font-size:1.04rem; }.kicker { color:var(--blue); font-weight:760; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; }
       .client-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }.client { border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#fff; box-shadow:0 12px 30px #173c7510; }.client-head { padding:23px 25px 16px; border-bottom:1px solid var(--line); }.client-head h3 { margin:0 0 4px; font-size:1.25rem; letter-spacing:-.03em; }.client-head p { margin:0; color:var(--muted); font-size:.91rem; }.step { display:grid; grid-template-columns:38px minmax(0,1fr); gap:12px; padding:20px 25px; border-bottom:1px solid var(--line); }.step:last-child { border:0; }.num { width:30px; height:30px; display:grid; place-items:center; border-radius:50%; background:linear-gradient(135deg,#2563eb,#38bdf8); color:#fff; font-size:.8rem; font-weight:800; }.step h4 { margin:1px 0 5px; font-size:1rem; letter-spacing:-.02em; }.step p { margin:0 0 11px; color:var(--muted); font-size:.91rem; }.code { display:block; overflow:auto; padding:11px 13px; border-radius:9px; background:#0c1d3c; color:#d8e9ff; font:.78rem/1.55 ui-monospace,SFMono-Regular,Menlo,monospace; }.mcp-card { max-width:1000px; margin:25px auto 0; border:1px solid #b9d7ff; border-radius:18px; padding:26px; background:#f8fbff; }.mcp-card h3 { margin:7px 0 5px; font-size:1.25rem; letter-spacing:-.03em; }.mcp-card > p { margin:0 0 18px; color:var(--muted); font-size:.92rem; }.mcp-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }.mcp-steps article { border:1px solid var(--line); border-radius:12px; padding:16px; background:#fff; }.mcp-steps h4 { margin:0 0 7px; font-size:.96rem; }.mcp-steps p { margin:0 0 10px; color:var(--muted); font-size:.87rem; }.guide-link { display:inline-block; margin-top:13px; color:#1d4ed8; font-size:.89rem; font-weight:720; text-decoration:underline; text-underline-offset:3px; }
-      .desktop { background:#f8fbff; border-top:1px solid #e6eefb; border-bottom:1px solid #e6eefb; }.desktop .client { display:flex; flex-direction:column; }.desktop .step { grid-template-columns:38px minmax(0,1fr); }.shot { margin:14px 0 0; overflow:hidden; border:1px solid var(--line); border-radius:12px; background:#fff; }.shot img { display:block; width:100%; height:auto; }.shot figcaption { padding:8px 11px; border-top:1px solid var(--line); color:#52617a; font-size:.78rem; }.note { max-width:1000px; margin:28px auto 0; padding:14px 16px; border:1px solid #bfdbfe; border-radius:12px; background:var(--pale); color:#1e3a68; font-size:.9rem; }.footer { padding:29px 0; background:#061633; color:#a9bddb; font-size:.84rem; }.footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:15px; }
+      .desktop { background:#f8fbff; border-top:1px solid #e6eefb; border-bottom:1px solid #e6eefb; }.desktop .client { display:flex; flex-direction:column; }.desktop .step { grid-template-columns:38px minmax(0,1fr); }.desktop-update { margin-top:58px; }.desktop-update .section-head { margin-bottom:30px; }.shot { margin:14px 0 0; overflow:hidden; border:1px solid var(--line); border-radius:12px; background:#fff; }.shot img { display:block; width:100%; height:auto; }.shot figcaption { padding:8px 11px; border-top:1px solid var(--line); color:#52617a; font-size:.78rem; }.note { max-width:1000px; margin:28px auto 0; padding:14px 16px; border:1px solid #bfdbfe; border-radius:12px; background:var(--pale); color:#1e3a68; font-size:.9rem; }.footer { padding:29px 0; background:#061633; color:#a9bddb; font-size:.84rem; }.footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:15px; }
       @media (max-width:760px) { .links { display:none; }.client-grid,.mcp-steps { grid-template-columns:1fr; }.hero { padding:65px 0 45px; } section { padding:62px 0; } }
       @media (max-width:520px) { .wrap { width:min(100% - 30px,1120px); }.hero h1 { font-size:2.75rem; }.client-head,.step { padding-left:18px; padding-right:18px; }.choice { width:100%; text-align:center; } }
+      .release-banner { border-bottom:1px solid #f5d88e; background:#fff8df; color:#573d08; }.release-banner-content { min-height:46px; display:flex; align-items:center; justify-content:center; gap:10px 14px; padding:9px 0; flex-wrap:wrap; font-size:.87rem; }.release-label { padding:3px 8px; border-radius:999px; background:#f6c957; color:#493100; font-size:.7rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }.release-summary { color:#765413; }.release-banner a { color:#174ea6; font-weight:760; text-decoration:underline; text-underline-offset:3px; }
   </style>
+  <script src="assets/release-banner.js" defer></script>
 </head>
 
 <body>
@@ -29,6 +31,8 @@
       <nav class="links" aria-label="Installation options"><a href="#terminal">Terminal</a><a href="#desktop">Desktop client</a><a href="#openstudio-mcp">OpenStudio-MCP</a><a href="index.html">Overview</a><a href="https://github.com/pnnl/openstudio-ai-plugins">GitHub</a></nav>
     </div>
   </header>
+
+  <aside class="release-banner" data-release-banner hidden aria-label="Latest OpenStudio AI release"></aside>
 
   <main>
     <section class="hero">
@@ -297,6 +301,88 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <div class="desktop-update">
+          <div class="section-head">
+            <span class="kicker">Keep OpenStudio AI current</span>
+
+            <h2>Update a desktop plugin</h2>
+
+            <p>When a newer OpenStudio AI version is available, follow the update steps for the desktop client you use.</p>
+          </div>
+
+          <div class="client-grid">
+            <article class="client">
+              <div class="client-head">
+                <h3>Claude Code Desktop</h3>
+
+                <p>First refresh the marketplace, then update the installed OpenStudio AI plugin.</p>
+              </div>
+
+              <div class="step">
+                <div class="num">
+                  1
+                </div>
+
+                <div>
+                  <h4>Check the marketplace for updates</h4>
+
+                  <p>Open <strong>Manage plugins → Browse → Personal</strong>. Open the <strong>openstudio-ai-local</strong> menu and select <strong>Check for updates</strong>.</p>
+
+                  <figure class="shot">
+                    <img src="assets/claude_code_marketplace_plugin_update.png" alt="Claude Code Personal marketplace with the openstudio-ai-local menu and Check for updates option">
+
+                    <figcaption>Refresh the Personal marketplace first.</figcaption>
+                  </figure>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">
+                  2
+                </div>
+
+                <div>
+                  <h4>Update the installed plugin</h4>
+
+                  <p>Return to the OpenStudio AI plugin page and click <strong>Update</strong>.</p>
+
+                  <figure class="shot">
+                    <img src="assets/claude_code_local_plugin_update.png" alt="Claude Code OpenStudio AI plugin page with the Update button available">
+
+                    <figcaption>Apply the available update to the installed plugin.</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </article>
+
+            <article class="client">
+              <div class="client-head">
+                <h3>Codex Desktop</h3>
+
+                <p>Updating the marketplace also updates the locally installed OpenStudio AI plugin.</p>
+              </div>
+
+              <div class="step">
+                <div class="num">
+                  1
+                </div>
+
+                <div>
+                  <h4>Upgrade the marketplace</h4>
+
+                  <p>Open <strong>Plugins</strong>, select the <strong>Marketplace</strong> tab, then click <strong>Upgrade</strong> for OpenStudio AI Local. No separate local-plugin update is needed.</p>
+
+                  <figure class="shot">
+                    <img src="assets/codex_plugin_update.png" alt="Codex Marketplace tab showing OpenStudio AI Local and the Upgrade button">
+
+                    <figcaption>Codex updates the installed plugin automatically.</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
 
         <p class="note">The setup skill checks your local runtime and explains any missing requirements before you begin modeling.</p>
