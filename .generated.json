@@ -3,7 +3,7 @@
   "generator": "openstudio-ai export marketplace",
   "package": {
     "name": "openstudio-ai",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "plugin": {
     "name": "openstudio-ai",
@@ -11,7 +11,7 @@
     "runtime_mode": "marketplace"
   },
   "source": {
-    "revision": "21b586fa97cd22754913a0f47dab3db3e5cccf16",
+    "revision": "d44b3aa5a07a76275d5d1ca3abad46485f584e3d",
     "dirty": null
   }
 }

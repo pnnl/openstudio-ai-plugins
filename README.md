@@ -15,8 +15,8 @@ This repository is a generated marketplace distribution for the OpenStudio AI ru
 
 ## Provenance
 
-- Package version: `0.3.0`
+- Package version: `0.3.1`
 - MCP interface contract: `4`
 - Runtime mode: `marketplace`
-- Source revision: `21b586fa97cd22754913a0f47dab3db3e5cccf16`
+- Source revision: `d44b3aa5a07a76275d5d1ca3abad46485f584e3d`
 - Complete machine-readable metadata: [`.generated.json`](.generated.json)
