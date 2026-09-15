@@ -1,7 +1,7 @@
 window.OPENSTUDIO_AI_LATEST_RELEASE = {
-  version: "0.3.0",
-  url: "https://github.com/pnnl/openstudio-ai-plugins/releases/tag/v0.3.0",
-  summary: "MCP contract 4: refresh or reinstall the plugin and reconnect the MCP server."
+  version: "0.3.1",
+  url: "https://github.com/pnnl/openstudio-ai-plugins/releases/tag/v0.3.1",
+  summary: "See the release notes for changes and upgrade guidance."
 };
 
 document.addEventListener("DOMContentLoaded", () => {
