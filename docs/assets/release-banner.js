@@ -1,7 +1,7 @@
 window.OPENSTUDIO_AI_LATEST_RELEASE = {
-  version: "0.3.1",
-  url: "https://github.com/pnnl/openstudio-ai-plugins/releases/tag/v0.3.1",
-  summary: "See the release notes for changes and upgrade guidance."
+  "version": "0.4.0",
+  "url": "https://github.com/pnnl/openstudio-ai-plugins/releases/tag/v0.4.0",
+  "summary": "See the release notes for changes and upgrade guidance."
 };
 
 document.addEventListener("DOMContentLoaded", () => {
