@@ -1,6 +1,6 @@
 window.OPENSTUDIO_AI_LATEST_RELEASE = {
-  "version": "0.4.0",
-  "url": "https://github.com/pnnl/openstudio-ai-plugins/releases/tag/v0.4.0",
+  "version": "0.4.1",
+  "url": "https://github.com/pnnl/openstudio-ai-plugins/releases/tag/v0.4.1",
   "summary": "See the release notes for changes and upgrade guidance."
 };
 
