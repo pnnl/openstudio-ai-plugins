@@ -7,8 +7,8 @@
         "stdio"
       ],
       "env": {
-        "OPENSTUDIO_AI_PLUGIN_VERSION": "0.4.0",
-        "OPENSTUDIO_AI_PLUGIN_CONTRACT_VERSION": "5"
+        "OPENSTUDIO_AI_PLUGIN_VERSION": "0.4.1",
+        "OPENSTUDIO_AI_PLUGIN_CONTRACT_VERSION": "6.0"
       }
     }
   }

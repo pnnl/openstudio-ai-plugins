@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_PACKAGE_SPEC = "openstudio-ai==0.4.0"
+DEFAULT_PACKAGE_SPEC = "openstudio-ai==0.4.1"
 
 
 def run(command: list[str]) -> int:
@@ -20,23 +20,14 @@ def run(command: list[str]) -> int:
 
 def runtime_command_path(command: str) -> str | None:
     """Find a console script for this interpreter after pip install."""
-    path = shutil.which(command)
-    if path:
-        return path
-    scripts_dir = Path(sys.executable).resolve().parent
+    scripts_dir = Path(sys.prefix) / ("Scripts" if os.name == "nt" else "bin")
     candidates = [scripts_dir / command]
     if os.name == "nt":
-        candidates.extend(
-            [
-                scripts_dir / f"{command}.exe",
-                scripts_dir / "Scripts" / command,
-                scripts_dir / "Scripts" / f"{command}.exe",
-            ]
-        )
+        candidates.append(scripts_dir / f"{command}.exe")
     for candidate in candidates:
         if candidate.is_file():
             return str(candidate)
-    return None
+    return None if sys.prefix != sys.base_prefix else shutil.which(command)
 
 
 def runtime_cli_path() -> str | None:
@@ -46,6 +37,8 @@ def runtime_cli_path() -> str | None:
 
 def is_pipx_managed_runtime() -> bool:
     """Return whether the active OpenStudio AI command belongs to a pipx venv."""
+    if sys.prefix != sys.base_prefix:
+        return False
     command = shutil.which("openstudio-ai")
     if command is None or shutil.which("pipx") is None:
         return False
