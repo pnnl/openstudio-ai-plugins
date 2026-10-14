@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -13,12 +14,20 @@ try:
 except ModuleNotFoundError:  # Python 3.10 compatibility for exported helpers
     tomllib = None
 
-PLUGIN_VERSION = "0.4.0"
-PLUGIN_CONTRACT_VERSION = "5"
+PLUGIN_VERSION = "0.4.1"
+PLUGIN_CONTRACT_VERSION = "6.0"
 
 
 def command_status(command: str) -> dict[str, object]:
-    path = shutil.which(command)
+    if sys.prefix != sys.base_prefix:
+        scripts_dir = Path(sys.prefix) / ("Scripts" if os.name == "nt" else "bin")
+        names = [command, f"{command}.exe"] if os.name == "nt" else [command]
+        path = next(
+            (str(scripts_dir / name) for name in names if (scripts_dir / name).is_file()),
+            None,
+        )
+    else:
+        path = shutil.which(command)
     return {"command": command, "available": path is not None, "path": path}
 
 
@@ -53,6 +62,15 @@ def nlr_mcp_status() -> dict[str, object]:
 
 
 def main() -> int:
+    reporting_script = Path(__file__).resolve().parents[3] / "skills" / "report-openstudio-failure" / "scripts" / "report_failure.py"
+    reporting = {"optional": True, "submission_ready": False, "affects_modeling_readiness": False}
+    if reporting_script.is_file():
+        try:
+            status = subprocess.run([sys.executable, "-I", "-S", str(reporting_script), "doctor"], capture_output=True, text=True, timeout=8)
+            if status.returncode == 0:
+                reporting = json.loads(status.stdout)
+        except (OSError, subprocess.TimeoutExpired, ValueError):
+            pass
     report = {
         "python": {
             "executable": sys.executable,
@@ -61,6 +79,7 @@ def main() -> int:
         "openstudio_ai_mcp": command_status("openstudio-ai-mcp"),
         "openstudio_ai": command_status("openstudio-ai"),
         "nlr_openstudio": nlr_mcp_status(),
+        "failure_reporting": reporting,
     }
     print(json.dumps(report, indent=2))
 
@@ -73,7 +92,7 @@ def main() -> int:
 
     doctor = subprocess.run(
         [
-            "openstudio-ai",
+            report["openstudio_ai"]["path"],
             "doctor",
             "--json",
             "--plugin-version",
